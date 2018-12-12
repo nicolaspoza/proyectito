@@ -1,0 +1,101 @@
+id,categoria
+1,Knowledge
+2,"The book writing, libraries, and book"
+3,Systems
+4,Data processing & computer science
+5,"Computer programming, programs & data"
+6,Special computer methods
+7,Unassigned
+8,Unassigned
+9,Unassigned
+10,Bibliography
+11,Bibliographies
+12,Bibliographies of individuals
+13,Unassigned
+14,Bibliographies of anonymous & pseudonymous works
+15,Bibliographies of works from specific places
+16,Bibliographies of works on specific subjects
+17,General subject catalogs
+18,"Catalogs arranged by author, date, etc"
+19,Dictionary catalogs
+20,Library & information sciences
+21,"Library relationships (with archives, information centers, etc"
+22,Administration of physical plant
+23,Personnel management
+24,Unassigned
+25,Library operations
+26,Libraries for specific subjects
+27,General libraries
+28,Reading & use of other information media
+29,Unassigned
+30,General encyclopedic works
+31,Encyclopedias in American English
+32,Encyclopedias in English
+33,Encyclopedias in other Germanic languages
+34,"Encyclopedias in French, Occitan, and Catalan"
+35,"Encyclopedias in Italian, Romanian, and related languages"
+36,Encyclopedias in Spanish & Portuguese
+37,Encyclopedias in Slavic languages
+38,Encyclopedias in Scandinavian languages
+39,Encyclopedias in other languages
+40,Unassigned formerly Biographies
+41,Unassigned
+42,Unassigned
+43,Unassigned
+44,Unassigned
+45,Unassigned
+46,Quotations
+47,Black Holes
+48,Astronomy
+49,"Magazines, journals & serials"
+50,General serial publications
+51,Serials in American English
+52,Serials in English
+53,Serials in other Germanic languages
+54,"Serials in French, Occitan, and Catalan"
+55,"Serials in Italian, Romanian, and related languages"
+56,Serials in Spanish & Portuguese
+57,Serials in Slavic languages
+58,Serials in Scandinavian languages
+59,Serials in other languages
+60,General organizations & museum science
+61,Organizations in North America
+62,Organizations in British Isles; in England
+63,Organizations in central Europe; in Germany
+64,Organizations in France & Monaco
+65,Organizations in Italy & adjacent islands
+66,Organizations in Iberian peninsula & adjacent islands
+67,Organizations in eastern Europe; in Russia
+68,Organizations in other geographic areas
+69,Museum science
+70,"News media, journalism, and publishing"
+71,Newspapers in North America
+72,Newspapers in British Isles; in England
+73,Newspapers in central Europe; in Germany
+74,Newspapers in France & Monaco
+75,Newspapers in Italy & adjacent islands
+76,Newspapers in Iberian peninsula & adjacent islands
+77,Newspapers in eastern Europe; in Russia
+78,Newspapers in Scandinavia
+79,Newspapers in other geographic areas
+80,General collections
+81,Collections in American English
+82,Collections in English
+83,Collections in other Germanic languages
+84,"Collections in French, Occitan, Catalan"
+85,"Collections in Italian, Romanian, & related languages"
+86,Collections in Spanish & Portuguese
+87,Collections in Slavic languages
+88,Collections in Scandinavian languages
+89,Collections in other languages
+90,Manuscripts and rare books
+91,Manuscripts
+92,Block books
+93,Incunabula
+94,Printed books
+95,Books notable for bindings
+96,Books notable for illustrations
+97,Books notable for ownership or origin
+98,"Prohibited works, forgeries, and hoaxes"
+99,Books notable for format
+100,Philosophy

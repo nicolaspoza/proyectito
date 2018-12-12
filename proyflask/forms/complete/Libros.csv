@@ -1,0 +1,101 @@
+id,nombre,autor,prestado,id_repisa
+1,DON QUIJOTE DE LA MANCHA, Miguel de Cervantes,False,1
+2,EN BUSCA DEL TIEMPO PERDIDO, Marcel Proust,True,2
+3,ODISEA, Homero,True,3
+4,EL PROCESO, Franz Kafka,False,4
+5,LA METAMORFOSIS, Franz Kafka,False,5
+6,ANA KERENINA, León Tolstói,False,6
+7,MOBY DICK, Herman Melville,False,7
+8,CUENTOS, Antón Chéjov,False,8
+9,GUERRA Y PAZ, León Tolstói,False,9
+10,FICCIONES, Jorge Luis Borges,False,10
+11,POETA EN NUEVA YORK, Federico García Lorca.,True,11
+12,LOS HERMANOS KARAMAZOV, Fiódor Dostoievski,False,12
+13,CRIMEN Y CASTIGO, Fiódor Dostoievski,True,13
+14,LA BIBLIA,nan,True,14
+15,LA MONTAÑA MÁGICA, Thomas Mann,False,15
+16,PEDRO PÁRAMO, Juan Ruflo,True,16
+17,ULISES, James Joyce,True,17
+18,EL RUIDO Y LA FURIA, William Faulkner,True,18
+19,MADAME BOVARY, Gustave Flaubert,True,19
+20,LAS MIL Y UNA NOCHES,nan,True,20
+21,BAJO EL VOLCÁN, Malcolm Lowry,True,21
+22,LA MUERTE DE VIRGILIO, Hermann Broch.,False,22
+23,ENSAYOS, Michel de Montaigne,True,23
+24,LOLITA, Vladimir Nabokov,True,24
+25,ROJO Y NEGRO, Stendhal,False,25
+26,EL ALEPH, Jorge Luis Borges,False,26
+27,TRISTAM SHANDY, Laurence Sterne,False,27
+28,EL CORAZON ES UN CAZADOR SOLITARIO, Carson McCullers,True,28
+29,EL CORAZON DE LAS TINIEBLAS, Joseph Conrad,False,29
+30,LAS FLORES DEL MAL, Charles Baudelaire,False,30
+31,EL BANQUETE, Platón,True,31
+32,EL GUARDIAN ENTRE EL CENTENO, J.D. Salinger,True,32
+33,LA EDUCACIÓN SENTIMENTAL, Gustave Flaubert,False,33
+34,ELEGÍAS DE DUINO, Rainer Maria Rilker,False,34
+35,RIMAS Y LEYENDAS, Gustavo Adolfo Bequer,True,35
+36,EL OFICIO DE VIVIR, Cesare Pavese,False,36
+37,EL LIBRO DEL DESASOSIEGO, Fernando Pessoa,True,37
+38,OBRA COMPLETA, Jorge Luis Borges,True,38
+39,ASÍ HABLÓ ZARATUSTRA, Friederich Nietzsche,True,39
+40,LA ISLA DEL TESORO, Robert Louis Stevenson,False,40
+41,RAYUELA, Julio Cortázar,False,41
+42,FORTUNA Y JACINTA, Benito Pérez Galdós,True,42
+43,HISTORIAS EXTRAORDINARIAS, Edgar Allan Poe,True,43
+44,LA CIUDAD Y LOS PERROS, Mario Vargas Llosa,False,44
+45,LA TIERRA BALDÍA, T.S. Elilot,False,45
+46,METAMORFOSIS, Ovidio,False,46
+47,POEMAS, Emily Dickinson,True,47
+48,EL REY LEAR, William Shakespeare,False,48
+49,HAMLET, William Shakespeare,False,49
+50,TRILCE, César Vallejo,False,50
+51,EL EXTRANJERO, Albert Camus,False,51
+52,¡ABSALÓN ABSALÓN!, William Faulkner,True,52
+53,ODAS, Horacio,False,53
+54,EL LARGO ADIÓS, Raymond Chandler,False,54
+55,EL IDIOTA, Fiódor Dostoievski,True,55
+56,EL ASTILLERO, Juan Carlos Onetti,True,56
+57,EL PRIMER HOMBRE, Albert Camus,True,57
+58,EL HACEDOR, Jorge Luis Borges,True,58
+59,CIEN AÑOS DE SOLEDAD, Gabriel García Márquez,True,59
+60,LA DIVINA COMEDIA, Dante Alighieri,True,60
+61,LA REGENTA, Leopoldo Alas Clarín,True,61
+62,LAS OLAS, Virginia Woolf,False,62
+63,MIENTRAS AGONIZO, William Faulkner,True,63
+64,DIARIOS, Franz Kafka,False,64
+65,LA CELESTINA, Fernando de Rojas,True,65
+66,RICARDO III, William Shakespeare,False,66
+67,RESIDENCIA EN LA TIERRA, Pablo Neruda,True,67
+68,DEMIAN, Herman Hesse,True,68
+69,DR. JEKYLL Y MR. HYDE, Robert Louis Stevenson,True,69
+70,CONVERSACIÓN EN LA CATEDRAL, Mario Vargas Llosa,True,70
+71,ORGULLO Y PREJUICIO, Jane Austen,False,71
+72,EL GATOPARDO, Giussepe Tomasi di Lampedusa,False,72
+73,LORD JIM, Joseph Conrad,True,73
+74,LAZARILLO DE TORMES, Anónimo,True,74
+75,VIAJE AL FIN DE LA NOCHE, Louis Ferdinand Céline,False,75
+76,CANTO GENERAL, Pablo Neruda,True,76
+77,ILIADA, Homero,True,77
+78,LUCES DE BOHEMIA, Ramón María del Valle-Inclán,True,78
+79,LA GUERRA DEL FIN DEL MUNDO, Mario Vargas Llosa,False,79
+80,ALICIA EN EL PAÍS DE LAS MARAVILLAS, Lewis Carroll,False,80
+81,AFORISMOS, G.C. Lichtenberg,False,81
+82,MANIFIESTO COMUNISTA, Karl Marx,True,82
+83,MORTAL Y ROSA, Francisco Umbral,True,83
+84,DUBLINESES, James Joyce,True,84
+85,EL GRAN GATSBY, F. Scott Fitzgerald,True,85
+86,PETER PAN, James Matthew Barrie,False,86
+87,SONETOS, Quevedo,True,87
+88,LA TIA JULIA Y EL ESCRIBIDOR, Mario Vargas Llosa,True,88
+89,DAVID COPPERFIELD, Charles Dickens,True,89
+90,EL CUARTETO DE ALEJANDRÍA, Lawrence Durrell,True,90
+91,LA CAÍDA, Albert Camus,True,91
+92,ORLANDO, Virginia Woolf,True,92
+93,LOS INCONSOLABLES, Kazuo Ishiguro,False,93
+94,ESPACIO, Juan Ramón Jiménez,True,94
+95,EL MAESTRO Y MARGARITA, Mijaíl Bulgakov,True,95
+96,EL JARDÍN DE LOS FINZI CONTINI, Giorgio Bassani,False,96
+97,PALMERAS SALVAJES, William Faulkner,True,97
+98,HARRI ETA HERRI (PIEDRA Y PUEBLO), Gabriel Aresti,False,98
+99,OBRAS COMPLETAS, Pío Baroja,False,99
+100,EL SEGUNDO SEXO, Simone de Beauvoir,True,100
