@@ -1,8 +1,50 @@
 {% extends 'base.html' %}
 
 {% block body %}
- <div class="jumbotron text-center">
-   <h1>Bienvenido a la biblioteca Ravenclaw</h1>
-  <p class="lead">Esta biblioteca te brindara la magia y el conocimiento que tanto buscabas</p>
+ <div class="jumbotron text-center" width="200" height="300">
+   <h2>Biblioteca Ravenclaw</h2>
+  <p class="lead">La biblioteca que te brindara la magia y conocimiento que tanto buscabas</p>
 </div>
+
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    img {
+      width: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active" align="center">
+        <img src="/static/imgs/librps.jpg" alt="Ravenclaw" width="200" height="300">
+      </div>
+
+      <div class="item" align="center">
+        <img src="/static/imgs/libros2.jpg" alt="Ravenclaw" width="200" height="300">
+      </div>
+
+      <div class="item" align="center">
+        <img src="/static/imgs/libros3.png" alt="Ravenclaw" width="200" height="300">
+      </div>
+    </div>
+<style>
 {% endblock %}

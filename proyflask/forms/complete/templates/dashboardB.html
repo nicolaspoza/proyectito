@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+   <h1>Libros</h1>
+   <a class="btn btn-success" href="/dashboardAdmin"></a>
+   <hr>
+   <table class="table table-striped">
+     <tr>
+       <th>ID</th>
+       <th>Nombre</th>
+       <th>Autor</th>
+       <th>Prestado</th>
+       <th>ID Repisa</th>
+     </tr>
+    {% for Book in Books %}
+    <tr>
+    <td>{{Book.id}}</td>
+    <td>{{Book.nombre}}</td>
+    <td>{{Book.autor}}</td>
+    <td>{{Book.prestado}}</td>
+    <td>{{repisa.id}}</td>
+    </tr>
+   {% endfor %}
+   </table>
+{% endblock %}

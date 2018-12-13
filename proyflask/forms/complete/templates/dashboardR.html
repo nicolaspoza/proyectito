@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
 
 {% block body %}
-   <h1>Perfil<small>Bienvenido</small></h1>
+   <h1>{{session.nombre}}</h1>
+   <a class="btn btn-success" href="/add_Repisa">Añadir repisa</a>
+   <a href="/Repisa/<string:id>/"></a>
+   <hr>
+   <table class="table table-striped">
+     <tr>
+       <th>ID</th>
+       <th>Categoria</th>
+       <th></th>
+       <th></th>
+     </tr>
+    {% for Repisa in Repisas %}
+    <tr>
+    <td>{{Repisa.id}}</td>
+    <td>{{Repisa.categoria}}</td>
+    </tr>
+   {% endfor %}
+   </table>
 {% endblock %}

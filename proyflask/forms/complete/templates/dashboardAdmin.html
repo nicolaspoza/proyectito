@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style type="text/css">
+.boton_personalizado{
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+  background-color: #1883ba;
+  border-radius: 6px;
+  border: 2px solid #00001;
+}
+</style>
+<html>
+<body>
+
+<center>
+<img src="/static/imgs/ravenclaw.png" alt="Girl in a jacket" width="500" height="600">
+<a class="boton_personalizado" href="/add_Book">Añadir Libro</a>
+<a class="boton_personalizado" href="/add_Repisa">Añadir Repisa</a>
+<a class="boton_personalizado" href="/registerempleados">Registrar Empleades</a>
+</center>
+</body>
+{% endblock %}

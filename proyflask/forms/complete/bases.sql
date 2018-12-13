@@ -1,46 +1,41 @@
 CREATE TABLE clientes (
-	rut VARCHAR(50) NOT NULL,
+	rut VARCHAR(12) NOT NULL,
 	nombre VARCHAR(50),
+	password VARCHAR(2000),
 	telefono INTEGER NOT NULL,
 	cant_libros INTEGER NOT NULL,
-	password VARCHAR(255),
 	PRIMARY KEY (rut),
 	UNIQUE (telefono)
 );
 CREATE TABLE repisas (
 	id INTEGER NOT NULL,
-	categoria VARCHAR(50) NOT NULL,
+	categoria VARCHAR(200) NOT NULL,
 	PRIMARY KEY (id),
 	UNIQUE (categoria)
 );
 CREATE TABLE empleados (
 rut VARCHAR(12) NOT NULL,
 nombre VARCHAR(50),
-password VARCHAR(255),
+password VARCHAR(2000),
 PRIMARY KEY (rut)
 );
 CREATE TABLE libros (
 	id INTEGER NOT NULL,
 	nombre VARCHAR(50),
 	autor VARCHAR(80),
-	prestado BOOLEAN,
+	prestado BOOLEAN NOT NULL,
 	id_repisa INTEGER NOT NULL,
 	PRIMARY KEY (id),
-	CHECK (prestado IN (0, 1)),
 	FOREIGN KEY(id_repisa) REFERENCES repisas (id)
 );
-CREATE TABLE Presta (
-	rut_cliente VARCHAR(12) NOT NULL,
-	rut_empleado VARCHAR(12) NOT NULL,
-	id_libro INTEGER NOT NULL,
-	fecha_prest VARCHAR(9),
-	fecha_dev VARCHAR(9),
-	PRIMARY KEY (rut_cliente, rut_empleado, id_libro),
-	FOREIGN KEY(rut_cliente) REFERENCES clientes (rut),
-	FOREIGN KEY(rut_empleado) REFERENCES empleados (rut),
-	FOREIGN KEY(id_libro) REFERENCES libros (id)
-);
 
+
+id_prueba INTEGER NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY(id_prueba) REFERENCES prueba(id)
+);
+CHECK (prestado IN (0, 1)),
+INSERT INTO Clientes(Rut, Nombre, password, Telefono, cant_libros)
 
 INSERT INTO Libros(Nombre, Autor, Fecha_prest, Fecha_dev, Prestado, rut_empleado, rut_cliente, ID_repisa) VALUES ('Animales Fantásticos y donde Encontrarlos', 'Newt Scamander', '05/09/2018', '10/09/2018','1', '19.954.344-k', '20.677.425-0', '35');
 

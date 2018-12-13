@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body%}
+<h1>{{session.nombre}}</h1>
+<ul class="list-group">
+{% for Repisa in Repisas %}
+<li class="list-group-item"><a href="Repisa/{{Repisa.id}}">{{Repisa.nombre}}</a></li>
+ {% endfor %}
+</ul>
+{% endblock %}

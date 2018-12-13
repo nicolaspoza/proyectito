@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-
 app.config['MYSQL_PASSWORD'] = 'hola123'
 app.config['MYSQL_DB'] = 'ravenclaw'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
@@ -22,6 +21,13 @@ def index():
 def about():
     return render_template('about.html')
 
+@app.route('/cliente')
+def cliente():
+    return render_template('cliente.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
 class RegisterFormUser(Form):
     rut = StringField('Rut', validators=[validators.Length(min=11, max=12)])
     nombre = StringField('Nombre Completo', validators=[validators.Length(min=4, max=200)])
@@ -31,7 +37,8 @@ class RegisterFormUser(Form):
         validators.EqualTo('confirmar',message='La clave no coincide')
     ])
     confirmar = PasswordField('Confirme su clave')
-    telefono = IntegerField('Telefono', validators=[validators.Length(min=9,max=9)])
+    telefono = IntegerField('Telefono', validators=[validators.NumberRange(min=9,max=9)])
+    cant_libros=IntegerField('Cantidad de libros', validators=[validators.NumberRange(min=0,max=5)])
 
 @app.route('/registerclientes',methods=['GET','POST'])
 def registerUser():
@@ -40,19 +47,15 @@ def registerUser():
         rut = form.rut.data
         nombre = form.nombre.data
         telefono = form.telefono.data
-        cant_libros = '0'
+        cant_libros = form.cant_libros.data
         password = sha256_crypt.encrypt(str(form.password.data))
 
-        # Create cursor
         cur = mysql.connection.cursor()
 
-        # Execute query
         cur.execute("INSERT INTO clientes(rut,nombre,telefono,password,cant_libros) VALUES(%s, %s, %s, %s, %s)", (rut,nombre,telefono,password,cant_libros))
 
-        # Commit to DB
         mysql.connection.commit()
 
-        # Close connection
         cur.close()
 
         flash('Genial ahora estas registrado y puedes ingresar a la pagina', 'success')
@@ -81,7 +84,7 @@ def loginUser():
                 session['rut'] = rut
 
                 flash('ahora te encuentras logeado','success')
-
+                return redirect(url_for('dashboardRep'))
             else:
                 error = 'clave incorrecta'
                 return render_template('loginClientes.html', error=error)
@@ -91,11 +94,6 @@ def loginUser():
             return render_template('loginClientes.html', error=error)
 
     return render_template('loginClientes.html')
-
-@app.route('/logoutClientes')
-def logoutUser():
-    session.clear()
-    return redirect(url_for('index'))
 
 def is_logged_inC(f):
     @wraps(f)
@@ -107,8 +105,15 @@ def is_logged_inC(f):
             return redirect(url_for('logoutUser'))
     return wrap
 
+@app.route('/logoutClientes')
+@is_logged_inC
+def logoutUser():
+    session.clear()
+    return redirect(url_for('index'))
+
+
 class RegisterFormAdmin(Form):
-    rut = StringField('rut', validators=[validators.Length(min=10, max=11)])
+    rut = StringField('rut', validators=[validators.Length(min=11, max=12)])
     nombre = StringField('Nombre Completo', validators=[validators.Length(min=4, max=200)])
     password = PasswordField('Password',[
         validators.DataRequired(),
@@ -160,8 +165,8 @@ def loginAdmin():
                 session['logeado_E'] = True
                 session['rut'] = rut
 
-                flash('ahora te encuentras logeado','success')
-                return redirect(url_for(''))
+                # flash('ahora te encuentras logeado','success')
+                return redirect(url_for('dashboardAdmin'))
             else:
                 error = 'clave incorrecta'
                 return render_template('loginEmpleados.html', error=error)
@@ -172,82 +177,78 @@ def loginAdmin():
 
     return render_template('loginEmpleados.html')
 
-@app.route('/logoutEmpleados')
-def logoutAdmin():
-    session.clear()
-    return redirect(url_for('index'))
-
-def is_logged_inC(f):
+def is_logged_inE(f):
     @wraps(f)
     def wrap(*args, **kwargs):
         if 'logeado_E' in session:
             return f(*args, **kwargs)
         else:
             flash('acceso denegado,por favor inicia sesion o registrate','danger')
-            return redirect(url_for('loginAdmin'))
+            return redirect(url_for('logoutAdmin'))
     return wrap
 
-@app.route('/dashboard')
-@is_logged_inC
-def dashboardR():
-    cur = mysql.connection.cursor()
-
-    result = cur.execute("SELECT * FROM repisas")
-    return render_template('dashboard.html')
-
-class RegisterFormBook(Form):
-    id = IntegerField('id', validators=[validators.Length(min=1,max=200000)])
-    nombre = StringField('nombre', validators=[validators.Length(min=4, max=2000)])
-    autor = StringField('autor', validators=[validators.Length(min=4, max=2000)])
-    prestado = BooleanField('prestado', default=True)
-
-
-@app.route('/dashboardB')
-@is_logged_inC
-def dashboardBooks():
-    cur = mysql.connection.cursor()
-
-    result = cur.execute("SELECT * FROM libros")
-    return render_template('dashboardB.html')
-
-
-@app.route('/registerB')
-def add_Book():
-    form = RegisterFormBook(request.form)
-    if request.method == 'POST' and form.validate():
-        id = id.form.data
-        nombre = nombre.form.data
-        autor = autor.form.data
-        prestado = prestado.form.data
-
-
-        cur = mysql.connection.cursor()
-
-        cur.execute("INSERT INTO libros(id,nombre,autor,prestado,id_repisa) VALUES(%s, %s, %s, %s, %s)",(id,nombre,autor,prestado,session['id']))
-
-        mysql.connection.commit()
-
-        cur.close()
+@app.route('/logoutEmpleados')
+@is_logged_inE
+def logoutAdmin():
+    session.clear()
+    return redirect(url_for('index'))
 
 
 @app.route('/dashboardR')
-@is_logged_inC
-def dashboardR():
+def dashboardRep():
     cur = mysql.connection.cursor()
 
+    result = cur.execute("SELECT * FROM repisas WHERE id = %s", [id])
+
+    Rep = cur.fetchall()
+
+    if result > 0:
+        return render_template('dashboardR.html',Rep)
+    else:
+        msg = 'repisa no encontrada'
+        return render_template('dashboardR.html',msg=msg)
+
+    cur.close()
+
+@app.route('/Repisas')
+def Repisas():
+
+    cur = mysql.connection.cursor()
+
+
     result = cur.execute("SELECT * FROM repisas")
-    return render_template('dashboardR.html')
+
+    repisas = cur.fetchall()
+
+    if result > 0:
+        return render_template('Repisas.html',repisas=repisas)
+    else:
+        msg = 'ningun libro encontrado'
+        return render_template('Repisas.html',msg=msg)
+    cur.close()
+
+@app.route('/Repisa/<string:id>/')
+def Repisa(id):
+
+    cur = mysql.connection.cursor()
+
+
+    result = cur.execute("SELECT * FROM repisas WHERE id = %s", [id])
+
+    repisa = cur.fetchone()
+
+    return render_template('Repisa.html', repisa=repisa)
 
 class RegisterFormR(Form):
-    id = IntegerField('id', validators=[validators.Length(min=1,max=200000)])
+    id = IntegerField('ID Repisa', validators=[validators.NumberRange(min=1,max=200000)])
     categoria = StringField('categoria', validators=[validators.Length(min=4, max=2000)])
 
 @app.route('/add_Repisa', methods=['GET','POST'])
 def add_Repisa():
     form = RegisterFormR(request.form)
     if request.method == 'POST' and form.validate():
-        id = id.form.data
-        categoria = categoria.form.data
+        id = form.id.data
+        categoria = form.categoria.data
 
         cur = mysql.connection.cursor()
 
@@ -257,7 +258,97 @@ def add_Repisa():
 
         cur.close()
 
+        flash('Repisa agregada','success')
 
+        return redirect(url_for('dashboardRep'))
+
+    return render_template('add_Repisa.html', form = form)
+
+
+@app.route('/Books')
+def Books():
+
+    cur = mysql.connection.cursor()
+
+
+    result = cur.execute("SELECT * FROM libro")
+
+    libros = cur.fetchall()
+
+    if result > 0:
+        return render_template('Books.html',Books=Books)
+    else:
+        msg = 'ningun libro encontrado'
+        return render_template('Books.html',msg=msg)
+    cur.close()
+
+@app.route('/Book/<string:id>/')
+def Book(id):
+
+    cur = mysql.connection.cursor()
+
+
+    result = cur.execute("SELECT * FROM libros WHERE id = %s", [id])
+
+    libro = cur.fetchone()
+
+    return render_template('Book.html', libro=libro)
+class RegisterFormBook(Form):
+    id = IntegerField('ID', validators=[validators.NumberRange(min=1,max=200000)])
+    nombre = StringField('nombre', validators=[validators.Length(min=4, max=2000)])
+    autor = StringField('autor', validators=[validators.Length(min=4, max=2000)])
+    prestado = BooleanField('prestado', default=True)
+
+
+@app.route('/dashboardB')
+def dashboardBooks():
+    cur = mysql.connection.cursor()
+
+    result = cur.execute("SELECT * FROM libros WHERE id = %s", [id])
+
+    Books = cur.fetchall()
+
+    if result > 0:
+        return render_template('dashboardB.html',Books=Books)
+    else:
+        msg = 'ningun libro encontrado'
+        return render_template('dashboardB.html',msg=msg)
+
+    cur.close()
+
+
+@app.route('/add_Book',methods=['GET','POST'])
+def add_Book():
+    form = RegisterFormBook(request.form)
+    if request.method == 'POST' and form.validate():
+        id = id.form.data
+        nombre = nombre.form.data
+        autor = autor.form.data
+        prestado = prestado.form.data
+
+        cur1 = mysql.connection.cursor()
+
+
+        result = cur1.execute("SELECT id.FROM repisas WHERE id = %s", [id_repisa])
+
+        cur.close()
+        cur = mysql.connection.cursor()
+
+        cur.execute("INSERT INTO libros(id,nombre,autor,prestado,id_repisa) VALUES(%s, %s, %s, %s, %s)",(id,nombre,autor,prestado,[id_repisa]))
+
+        mysql.connection.commit()
+
+        cur.close()
+
+        flash('Repisa agregada','success')
+
+        return redict(url_for('dashboardB'))
+
+    return render_template('add_Book.html', form = form)
+
+@app.route('/dashboardAdmin')
+def dashboardAdmin():
+    return render_template('dashboardAdmin.html')
 if __name__ == "__main__":
     app.secret_key = 'secret123'
     app.run(debug=True)

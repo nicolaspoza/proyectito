@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body%}
+<h1>Repisas</h1>
+<ul class="list-group">
+{% for Book in Books%}
+<li class="list-group-item"><a href="Book/{{Book.id}}">{{Book.nombre}}</a></li>
+ {% endfor %}
+</ul>
+{% endblock %}
